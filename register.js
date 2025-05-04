@@ -16,7 +16,7 @@ function addRegister() {
 
     if (localStorage.getItem(regObject.username)) {
         alert("Already registered Account");
-        window.location = "./login.html";  
+        window.location = "./index.html";  
 
     } else {
 
@@ -29,6 +29,6 @@ function addRegister() {
         // Store the logged-in user separately
         localStorage.setItem("loggedAccount", username);
 
-        window.location = "./login.html";  
+        window.location = "./index.html";  
     }
 }

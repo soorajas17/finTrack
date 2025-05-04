@@ -23,7 +23,7 @@ window.onload = function () {
 function logout() {
     if (confirm("Are you sure you want to logout?")) {
         localStorage.removeItem("loggedAccount");
-        window.location = './login.html';
+        window.location = './index.html';
     }
 }
 

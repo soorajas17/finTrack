@@ -14,7 +14,7 @@ function loginButton() {
     if (username && logObject) {
         if (logObject.password === password) {
             localStorage.setItem("loggedAccount", username); 
-            window.location = "./dashboard.html";
+            window.location = "./user.html";
         } else {
             alert("Incorrect password");
         }
