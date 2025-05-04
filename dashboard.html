@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard </title>
+    <link rel="icon" type="image/jpg"
+    href="https://img.favpng.com/24/12/8/net-profit-net-income-clip-art-png-favpng-Q00aG3GnTmdMwYqXNwu6K1t58.jpg" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- 2. Chart.js ( pie chart) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- fnt awsm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3 ">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 id="welcomeuser"></h4>
+            <button class="btn btn-outline-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i>
+                Logout</button>
+        </div>
+
+        <div class="mb-4 text-center">
+            <h1 class="text-success" style="font-size: 55px; font-weight: 550; font-family: 'Times New Roman', Times, serif;">
+              <i>FinTrack</i>
+            </h1>
+            <p class="text-success fs-5">Guiding Family Finances Together..</p>
+          </div>
+
+        <!-- Balance Display -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card text-bg-success">
+                    <div class="card-body text-center">
+                        <h5>Total Balance</h5>
+                        <h3 id="balanceDisplay">0 Rs</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-bg-danger">
+                    <div class="card-body text-center">
+                        <h5>Total Expenses</h5>
+                        <h3 id="expDisplay">0 Rs</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Income Form -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">Add Income</div>
+            <div class="card-body row g-3">
+                <div class="col-md-5">
+                    <input type="text" id="incometype" class="form-control" placeholder="Income Type">
+                </div>
+                <div class="col-md-5">
+                    <input type="number" id="incomeAmount" class="form-control" placeholder="Amount">
+                </div>
+                <div class="col-md-2 d-grid">
+                    <button class="btn btn-success" onclick="AddIncome()">Add Income</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expense Form -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">Add Expense</div>
+            <div class="card-body row g-3">
+                <div class="col-md-5">
+                    <input type="text" id="expensetype" class="form-control" placeholder="Expense Type">
+                </div>
+                <div class="col-md-5">
+                    <input type="number" id="expenseAmount" class="form-control" placeholder="Amount">
+                </div>
+                <div class="col-md-2 d-grid">
+                    <button class="btn btn-danger" onclick="AddExpense()">Add Expense</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tables -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h5 class="text-success">Income Details</h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="incomeDetailes"></tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-danger">Expense Details</h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expenseDetailes"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">Expense Breakdown</div>
+            <div class="card-body">
+                <canvas id="piechart"
+                    style="max-width: 300px; max-height: 300px; width: 100%; height: auto; display: block; margin: 0 auto;"></canvas>
+                <button class="btn btn-outline-primary" onclick="displaypie()"> Show Pie-Chart</button>
+                <button class="btn btn-outline-secondary" onclick="clearAll()"><i class="fas fa-broom"></i> Clear All</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="./dashboard.js"></script>
+</body>
+
+</html>

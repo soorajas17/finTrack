@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/jpg"
+    href="https://img.favpng.com/24/12/8/net-profit-net-income-clip-art-png-favpng-Q00aG3GnTmdMwYqXNwu6K1t58.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-color: whitesmoke;">
+  <div class="container d-flex align-items-center justify-content-center" style="margin-top: 50px;">
+    <div class="container text-center">
+      
+      <div class="mb-5">
+        <h1 class="text-success" style="font-size: 55px; font-weight: 550; font-family: 'Times New Roman', Times, serif;">
+          <i>FinTrack</i>
+        </h1>
+        <p class="text-success fs-5">Guiding Family Finances Together..</p>
+      </div>
+
+      <div class="row justify-content-center align-items-center mt-5">
+        <!-- Image  -->
+        <div class="col-md-5 mb-4 mb-md-0">
+          <img src="https://cdni.iconscout.com/illustration/premium/thumb/budget-6299595-5295199.png"
+            class="img-fluid rounded" alt="Login Image">
+        </div>
+
+        <!-- Login Form  -->
+        <div class="col-md-5 p-4 border rounded bg-light shadow-sm">
+          <h3 class=" fw-semibold mb-4 text-center "style="font-size: 35px;" >Login</h3>
+          <form>
+            <input type="text" id="username" class="form-control form-control-sm mb-3 p-2 rounded-5" placeholder="Username">
+            <input type="password" id="password" class="form-control form-control-sm mb-4 p-2 rounded-5" placeholder="Password">
+            <button type="button" onclick="loginButton()" class="btn btn-info text-white form-control p-2 rounded-5 mb-2">Login</button>
+          </form>
+
+          <div class="text-center">
+            <span>Don't have an account?</span>
+            <button type="button" style="text-decoration: none;" class="btn btn-link" onclick="register()">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--JS file -->
+  <script src="./login.js"></script>
+</body>
+
+</html>
